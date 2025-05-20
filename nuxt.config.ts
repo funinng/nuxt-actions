@@ -4,9 +4,6 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxt/eslint'],
   app: {
-    baseURL: '/nuxt-actions/', // 注意斜杠和仓库名一致
-    head: {
-      link: []
-    }
+    baseURL: '/nuxt-actions/'
   }
 })
