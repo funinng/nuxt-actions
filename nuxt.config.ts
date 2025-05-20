@@ -2,5 +2,11 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
   devtools: { enabled: true },
-  modules: ['@nuxt/eslint']
+  modules: ['@nuxt/eslint'],
+  app: {
+    baseURL: '/nuxt-actions/', // 注意斜杠和仓库名一致
+    head: {
+      link: []
+    }
+  }
 })
