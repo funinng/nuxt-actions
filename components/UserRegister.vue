@@ -11,7 +11,7 @@
           type="email"
           required
           placeholder="请输入邮箱"
-        >
+        />
       </div>
 
       <div class="form-group">
@@ -22,7 +22,7 @@
           type="text"
           required
           placeholder="请输入姓名"
-        >
+        />
       </div>
       <div class="form-group">
         <label for="username">用户名</label>
@@ -32,7 +32,7 @@
           type="text"
           required
           placeholder="请输入用户名"
-        >
+        />
       </div>
       <div class="form-group">
         <label for="password">密码</label>
@@ -42,7 +42,7 @@
           type="password"
           required
           placeholder="请输入密码"
-        >
+        />
       </div>
 
       <button type="submit" :disabled="loading">
@@ -82,9 +82,9 @@ async function registerUser() {
 
     const response = await register(
       form.value.email,
+      form.value.name,
       form.value.username,
-      form.value.password,
-      form.value.name
+      form.value.password
     )
 
     if (response.success) {
@@ -93,8 +93,8 @@ async function registerUser() {
       form.value = {
         email: '',
         name: '',
-        username: '',
-        password: ''
+        password: '',
+        username: ''
       }
     } else {
       throw new Error(response.message || '注册失败')

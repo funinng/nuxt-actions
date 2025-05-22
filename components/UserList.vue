@@ -85,7 +85,7 @@ async function fetchUsers() {
     }
 
     // 从data字段获取用户列表
-    users.value = result.data || []
+    users.value = result.data?.list || []
   } catch (err) {
     error.value = err.message || '获取用户数据失败'
     console.error(error.value)
