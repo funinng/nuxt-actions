@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>照片 EXIF 信息读取器</h1>
+    <h1 class="text-2xl font-bold">照片 EXIF 信息读取器</h1>
     <input type="file" accept="image/*" @change="handleFileChange" />
 
     <div v-if="imageData">
@@ -14,10 +14,14 @@
 
     <div v-if="exifData">
       <h2>EXIF 信息</h2>
-      <p><strong>相机型号:</strong> {{ exifData.Make }} {{ exifData.Model }}</p>
-      <p><strong>ISO:</strong> {{ exifData.ISO }}</p>
-      <p><strong>光圈:</strong> f/{{ exifData.FNumber }}</p>
-      <p><strong>拍摄时间:</strong> {{ exifData.DateTimeOriginal }}</p>
+      <p class="text-lg">
+        <strong>相机型号:</strong> {{ exifData.Make }} {{ exifData.Model }}
+      </p>
+      <p class="text-lg"><strong>ISO:</strong> {{ exifData.ISO }}</p>
+      <p class="text-lg"><strong>光圈:</strong> f/{{ exifData.FNumber }}</p>
+      <p class="text-lg">
+        <strong>拍摄时间:</strong> {{ exifData.DateTimeOriginal }}
+      </p>
       <div
         v-if="
           exifData.latitude !== undefined && exifData.longitude !== undefined
