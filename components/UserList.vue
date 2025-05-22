@@ -3,7 +3,7 @@
     <!-- 用户列表部分 -->
     <div class="user-list">
       <h2>用户列表</h2>
-      <button @click="fetchUsers" :disabled="loading">刷新列表</button>
+      <button :disabled="loading" @click="fetchUsers">刷新列表</button>
 
       <div v-if="loading && !selectedUser" class="loading">加载中...</div>
 

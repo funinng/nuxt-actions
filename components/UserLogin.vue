@@ -2,7 +2,7 @@
   <div class="user-login">
     <h2>用户登录</h2>
 
-    <form @submit.prevent="loginUser" class="login-form">
+    <form class="login-form" @submit.prevent="loginUser">
       <div class="form-group">
         <label for="username">用户名/邮箱</label>
         <input
@@ -11,7 +11,7 @@
           type="text"
           required
           placeholder="请输入用户名或邮箱"
-        />
+        >
       </div>
 
       <div class="form-group">
@@ -22,7 +22,7 @@
           type="password"
           required
           placeholder="请输入密码"
-        />
+        >
       </div>
 
       <button type="submit" :disabled="loading">

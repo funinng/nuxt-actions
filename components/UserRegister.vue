@@ -2,7 +2,7 @@
   <div class="user-register">
     <h2>注册新用户</h2>
 
-    <form @submit.prevent="registerUser" class="register-form">
+    <form class="register-form" @submit.prevent="registerUser">
       <div class="form-group">
         <label for="email">邮箱</label>
         <input
@@ -11,7 +11,7 @@
           type="email"
           required
           placeholder="请输入邮箱"
-        />
+        >
       </div>
 
       <div class="form-group">
@@ -22,7 +22,7 @@
           type="text"
           required
           placeholder="请输入姓名"
-        />
+        >
       </div>
       <div class="form-group">
         <label for="username">用户名</label>
@@ -32,7 +32,7 @@
           type="text"
           required
           placeholder="请输入用户名"
-        />
+        >
       </div>
       <div class="form-group">
         <label for="password">密码</label>
@@ -42,7 +42,7 @@
           type="password"
           required
           placeholder="请输入密码"
-        />
+        >
       </div>
 
       <button type="submit" :disabled="loading">
