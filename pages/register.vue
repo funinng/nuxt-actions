@@ -1,6 +1,6 @@
 <template>
   <div class="register-page">
-    <UserRegister />
+    <UserRegister @login-success="handleLoginSuccess" />
     <div class="login-link">
       <p>已有账号？<NuxtLink to="/login">立即登录</NuxtLink></p>
     </div>
@@ -8,6 +8,11 @@
 </template>
 
 <script setup>
+import UserRegister from '~/components/UserRegister.vue'
+
+function handleLoginSuccess(user) {
+  console.log(user)
+}
 // 您可以在此添加注册成功后的逻辑
 </script>
 

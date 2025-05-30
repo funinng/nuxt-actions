@@ -9,10 +9,11 @@
       @change="handleFileChange"
     />
 
+    <v-btn color="primary" icon="mdi-file-upload"></v-btn>
     <!-- 自定义上传按钮 -->
-    <button class="select-btn" :disabled="uploading" @click="triggerFileSelect">
+    <v-btn class="select-btn" :disabled="uploading" @click="triggerFileSelect">
       选择文件
-    </button>
+    </v-btn>
 
     <!-- 文件信息 -->
     <div v-if="fileName" class="file-info">

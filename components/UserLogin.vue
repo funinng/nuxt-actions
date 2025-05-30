@@ -11,7 +11,7 @@
           type="text"
           required
           placeholder="请输入用户名或邮箱"
-        >
+        />
       </div>
 
       <div class="form-group">
@@ -22,7 +22,7 @@
           type="password"
           required
           placeholder="请输入密码"
-        >
+        />
       </div>
 
       <button type="submit" :disabled="loading">
@@ -41,8 +41,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { login } from '@/api/auth/api'
-
+import { useUserApi } from '@/api/auth/api'
 const form = ref({
   username: '',
   password: ''
@@ -55,27 +54,10 @@ const isError = ref(false)
 const emit = defineEmits(['login-success'])
 
 async function loginUser() {
-  try {
-    loading.value = true
-    message.value = ''
-    isError.value = false
-
-    const response = await login(form.value.username, form.value.password)
-
-    if (response.success) {
-      message.value = '登录成功'
-      isError.value = false
-      localStorage.setItem('token', response.data.token)
-      localStorage.setItem('user', JSON.stringify(response.data.user))
-      emit('login-success', response.data.user)
-    } else {
-      throw new Error(response.message || '登录失败')
-    }
-  } catch (error) {
-    isError.value = true
-    message.value = error.message || '登录失败，请检查用户名和密码'
-  } finally {
-    loading.value = false
+  const response = await useUserApi().login(form.value)
+  console.log(response)
+  if (response.success) {
+    emit('login-success', response.data.user)
   }
 }
 </script>

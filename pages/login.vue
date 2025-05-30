@@ -1,9 +1,6 @@
 <template>
   <div class="login-page">
     <UserLogin @login-success="onLoginSuccess" />
-    <div class="register-link">
-      <p>还没有账号？<NuxtLink to="/register">立即注册</NuxtLink></p>
-    </div>
   </div>
 </template>
 

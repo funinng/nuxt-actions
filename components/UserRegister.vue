@@ -15,13 +15,13 @@
       </div>
 
       <div class="form-group">
-        <label for="name">姓名</label>
+        <label for="nickname">昵称</label>
         <input
-          id="name"
-          v-model="form.name"
+          id="nickname"
+          v-model="form.nickname"
           type="text"
           required
-          placeholder="请输入姓名"
+          placeholder="请输入昵称"
         />
       </div>
       <div class="form-group">
@@ -61,11 +61,12 @@
 
 <script setup>
 import { ref } from 'vue'
-import { register } from '@/api/auth/api'
+import { useUserApi } from '~/api/auth/api'
+const { $snackbar } = useNuxtApp()
 
 const form = ref({
   email: '',
-  name: '',
+  nickname: '',
   username: '',
   password: ''
 })
@@ -74,36 +75,13 @@ const loading = ref(false)
 const message = ref('')
 const isError = ref(false)
 
+const emit = defineEmits(['login-success'])
+
 async function registerUser() {
-  try {
-    loading.value = true
-    message.value = ''
-    isError.value = false
-
-    const response = await register(
-      form.value.email,
-      form.value.name,
-      form.value.username,
-      form.value.password
-    )
-
-    if (response.success) {
-      message.value = '注册成功，请登录'
-      isError.value = false
-      form.value = {
-        email: '',
-        name: '',
-        password: '',
-        username: ''
-      }
-    } else {
-      throw new Error(response.message || '注册失败')
-    }
-  } catch (error) {
-    isError.value = true
-    message.value = error.message || '注册失败，请稍后再试'
-  } finally {
-    loading.value = false
+  const response = await useUserApi().register(form.value)
+  if (response.success) {
+    $snackbar.show('注册成功，请登录', 'success')
+    emit('login-success', response.data)
   }
 }
 </script>
